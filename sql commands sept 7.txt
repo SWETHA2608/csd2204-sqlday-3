@@ -1,0 +1,176 @@
+september 7; DAY 3
+
+
+
+show create table student\g
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                    |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| student | CREATE TABLE `student` (
+  `sid` int(5) DEFAULT NULL,
+  `snm` varchar(25) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `age` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
+
+
+
+select tobase64('abc'),from_base64(to_base64('abc'));
+
+
+select CURTIME();
+SELECT CURRENT TIME();
+CREATE TABLE Manufacturers (  Code INTEGER,  Name VARCHAR(255) NOT NULL,  PRIMARY KEY (Code)   );
+
+CREATE TABLE Products (  Code INTEGER,  Name VARCHAR(255) NOT NULL ,
+  Price DECIMAL NOT NULL ,
+  Manufacturer INTEGER NOT NULL, 
+  PRIMARY KEY (Code), 
+  FOREIGN KEY (Manufacturer) REFERENCES Manufacturers(Code)) ;
+  
+  
+  
+  INSERT INTO Manufacturers(Code,Name) VALUES(1,'Sony');
+  INSERT INTO Manufacturers(Code,Name) VALUES(2,'Creative Labs');
+  INSERT INTO Manufacturers(Code,Name) VALUES(3,'Hewlett-Packard');
+  INSERT INTO Manufacturers(Code,Name) VALUES(4,'Iomega');
+  INSERT INTO Manufacturers(Code,Name) VALUES(5,'Fujitsu');
+  INSERT INTO Manufacturers(Code,Name) VALUES(6,'Winchester');
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(1,'Hard drive',240,5);
+  
+  
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(2,'Memory',120,6);
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(3,'ZIP drive',150,4);
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(4,'Floppy disk',5,6);
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(5,'Monitor',240,1);
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(6,'DVD drive',180,2);
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(7,'CD drive',90,2);
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(8,'Printer',270,3);
+  INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(9,'Toner cartridge',66,3);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(10,'DVD burner',180,90));
+  
+  MariaDB [mytestdb]> SELECT name,price FROM products;
+  +-----------------+--------+
+  | name            | price  |
+  +-----------------+--------+
+  | Hard drive      | 240.00 |
+  | Memory          | 120.00 |
+  | ZIP drive       | 150.00 |
+  | Floppy disk     |   5.00 |
+  | Monitor         | 240.00 |
+  | DVD drive       | 180.00 |
+  | CD drive        |  90.00 |
+  | Printer         | 270.00 |
+  | Toner cartridge |  66.00 |
+  | DVD burner      | 180.00 |
+  +-----------------+--------+
+  
+  
+  SELECT * FROM PRODUCTS order by manufacturer DESC,name desc;
+  
+  
+  
+  
+  
+  
+  
+  
+select name from products;
+
+
+
+
+select max(price) from products;
+
+
+MariaDB [nav]> SELECT COUNT(PRICE) FROM PRODUCTS WHERE PRICE>=150;
++--------------+
+| COUNT(PRICE) |
++--------------+
+|            6 |
++--------------+
+
+
+
+
+MariaDB [mytestdb]> select * from products where name like '%drive%';
++------+------------+--------+--------------+
+| CODE | NAME       | PRICE  | MANUFACTURER |
++------+------------+--------+--------------+
+|    1 | Hard drive | 240.00 |            5 |
+|    3 | ZIP drive  | 150.00 |            4 |
+|    6 | DVD drive  | 180.00 |            2 |
+|    7 | CD drive   |  90.00 |            2 |
++------+------------+--------+--------------+
+
+
+
+select * from Products where Name like '%drive';
++------+------------+-------+--------------+
+| Code | Name       | Price | Manufacturer |
++------+------------+-------+--------------+
+|    1 | Hard drive |   240 |            5 |
+|    3 | ZIP drive  |   150 |            4 |
+|    6 | DVD drive  |   180 |            2 |
+|    7 | CD drive   |    90 |            2 |
++------+------------+-------+--------------+
+
+
+
+select * from products where name like '%drive%';
+
+
++------------+
+| NAME       |
++------------+
+| Hard drive |
+| ZIP drive  |
+| DVD drive  |
+| CD drive   |
+
+
+
+
+
+
+
+
+
+
+
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+--------+--------------+
+| CODE | NAME            | PRICE  | MANUFACTURER |
++------+-----------------+--------+--------------+
+|    1 | Hard drive      | 240.00 |            5 |
+|    2 | Memory          | 120.00 |            6 |
+|    3 | ZIP drive       | 150.00 |            4 |
+|    4 | Floppy disk     |   5.00 |            6 |
+|    5 | Monitor         | 240.00 |            1 |
+|    6 | DVD drive       | 180.00 |            2 |
+|    7 | CD drive        |  90.00 |            2 |
+|    8 | Printer         | 270.00 |            3 |
+|    9 | Toner cartridge |  66.00 |            3 |
+|   10 | DVD burner      | 180.00 |            2 |
++------+-----------------+--------+--------------+
+10 rows in set (0.00 sec)MariaDB [mytestdb]> UPDATE PRODUCTS SET price =500 WHERE NAME = 'Hard drive';
+Query OK, 1 row affected (0.11 sec)Rows matched: 1  Changed: 1  Warnings: 
+0MariaDB [mytestdb]> select * from products;
++------+-----------------+--------+--------------+
+| CODE | NAME            | PRICE  | MANUFACTURER |
++------+-----------------+--------+--------------+
+|    1 | Hard drive      | 500.00 |            5 |
+|    2 | Memory          | 120.00 |            6 |
+|    3 | ZIP drive       | 150.00 |            4 |
+|    4 | Floppy disk     |   5.00 |            6 |
+|    5 | Monitor         | 240.00 |            1 |
+|    6 | DVD drive       | 180.00 |            2 |
+|    7 | CD drive        |  90.00 |            2 |
+|    8 | Printer         | 270.00 |            3 |
+|    9 | Toner cartridge |  66.00 |            3 |
+|   10 | DVD burner      | 180.00 |            2 |
++------+-----------------+--------+--------------+
+10 rows in set (0.00 sec)
+
+
+insert into products values(11,'USB DRIVE',230,7);
